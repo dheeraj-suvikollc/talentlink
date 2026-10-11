@@ -131,7 +131,7 @@ export function RepositoryTable({
           </span>
           <span className="text-[15px] font-bold tabular-nums text-primary dark:text-[#c5cae9]">{(filtered ? total : poolSize).toLocaleString()}</span>
           <span className="text-xs font-medium text-text-secondary dark:text-white/60">
-            {filtered ? `of ${poolSize.toLocaleString()} resumes` : "resumes"}
+            {filtered ? `of ${poolSize.toLocaleString()}` : "resumes"}
           </span>
         </div>
         <input
@@ -140,7 +140,7 @@ export function RepositoryTable({
           onChange={(e) => setSearch(e.target.value)}
           aria-label="Search the repository"
           placeholder="Search name, skill, role, location…"
-          className={`${toolbarInputClass} min-w-[200px] flex-1 md:max-w-xs`}
+          className={`${toolbarInputClass} min-w-[160px] flex-1 md:max-w-xs`}
         />
         <select aria-label="Filter by visa" value={query.visa} onChange={(e) => go({ visa: e.target.value })} className={toolbarInputClass}>
           <option value="">All visas</option>
