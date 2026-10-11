@@ -121,12 +121,19 @@ export function RepositoryTable({
   return (
     <div>
       <div className="mb-3 flex flex-wrap items-center gap-2">
-        <span className="inline-flex items-center gap-2 text-sm font-semibold text-text-strong dark:text-white" title="Total resumes in the repository">
-          <span className="inline-flex h-8 min-w-8 items-center justify-center rounded-full bg-primary px-2 text-xs font-bold tabular-nums text-white">
-            {poolSize.toLocaleString()}
+        {/* Count chip, same height as the filters: total, or "matches of total" while filtering. */}
+        <div
+          className="inline-flex h-[38px] shrink-0 items-center gap-2 rounded-lg border border-primary/15 bg-gradient-to-r from-primary/[0.08] to-primary/[0.02] pl-1.5 pr-3 dark:border-white/15 dark:from-white/10 dark:to-transparent"
+          aria-live="polite"
+        >
+          <span className="grid h-7 w-7 place-items-center rounded-md bg-primary text-white shadow-sm" aria-hidden>
+            <FileText size={14} />
           </span>
-          Resumes
-        </span>
+          <span className="text-[15px] font-bold tabular-nums text-primary dark:text-[#c5cae9]">{(filtered ? total : poolSize).toLocaleString()}</span>
+          <span className="text-xs font-medium text-text-secondary dark:text-white/60">
+            {filtered ? `of ${poolSize.toLocaleString()} resumes` : "resumes"}
+          </span>
+        </div>
         <input
           ref={searchRef}
           value={search}
